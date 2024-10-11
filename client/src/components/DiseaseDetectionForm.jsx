@@ -22,7 +22,7 @@ const DiseaseDetectionForm = () => {
 
     try {
       const identifyResponse = await axios.post(
-        "http://172.31.7.45:9100/api/v3/health_assessment",
+        "http://127.0.0.1:9100/api/v3/health_assessment",
         formData,
         {
           headers: {
