@@ -23,11 +23,11 @@ app.post(
     const imagePath = req.file.path;
 
     try {
-      // Prepare form data for Plant.ID health assessment API
+      
       const plantIdFormData = new FormData();
       plantIdFormData.append("images", fs.createReadStream(imagePath));
 
-      // Calling Plant.ID Health Assessment API
+   
       const plantIdResponse = await axios.post(
         "https://plant.id/api/v3/health_assessment?details=local_name,description,url,treatment,classification,common_names,cause",
         plantIdFormData,
@@ -54,7 +54,7 @@ app.post(
         res.status(500).json({ error: "Internal Server Error" });
       }
     } finally {
-      // Clean up the uploaded file
+      
       fs.unlink(imagePath, (err) => {
         if (err) console.error("Error deleting file:", err);
       });
@@ -62,7 +62,7 @@ app.post(
   }
 );
 
-// Start server
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
